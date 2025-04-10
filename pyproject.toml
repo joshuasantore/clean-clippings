@@ -7,7 +7,7 @@ name = "clean-clippings"
 version = "0.1.0"
 description = "A command line app to clean clippings.txt files from the kindle"
 authors = [
-    {name = "Joshu Santore"}
+    {name = "Joshua Santore"}
 ]
 readme = "README.md"
 requires-python = ">=3.8"
