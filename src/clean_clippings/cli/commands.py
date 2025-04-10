@@ -1,5 +1,6 @@
 import click
 from clean_clippings.file.locate import locateDirectory, locateFile 
+from clean_clippings.file.clean import cleanFile
 
 @click.command()
 @click.option('-d', '--dir', is_flag=True, help='path is to a directory')
@@ -13,6 +14,7 @@ def cli(dir: bool, path):
 			if file[-4:] != '.txt':
 				raise ValueError("path must be to a .txt file unless -d flag provided")
 			locateFile(file)
+			cleanFile(file)
 	
 	
 
