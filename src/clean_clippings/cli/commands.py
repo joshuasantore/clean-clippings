@@ -1,5 +1,5 @@
 import click
-from clean_clippings.file.locate import locateDirectory, locateFile 
+import os
 from clean_clippings.file.validate import validateFile
 from clean_clippings.file.clean import cleanFile
 
@@ -8,15 +8,20 @@ from clean_clippings.file.clean import cleanFile
 @click.argument('path', nargs=-1, required=True)
 def cli(dir: bool, path):
 	if dir:
+		# validate dirs
 		for dir in path:
-			locateDirectory(dir)
+			if not os.path.isdir(dir):
+				raise NotADirectoryError(f"directory {dir} does not exist")
+			
 	else:
 		# validate files
 		for file in path:
 			if file[-4:] != '.txt':
 				raise ValueError("path must be to a .txt file unless -d flag provided")
-			if not locateFile(file):
+			
+			if not os.path.isfile(file):
 				raise FileNotFoundError(f"file {file} does not exist")
+			
 			if not validateFile(file):
 				raise ValueError(f"file {file} is not formatted as a clippings.txt")
 
