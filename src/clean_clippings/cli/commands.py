@@ -30,7 +30,7 @@ def cli(dir: bool, path):
 				raise FileNotFoundError(f"file {file} does not exist")
 			
 			if not validateFile(file):
-				raise ValueError(f"file {file} is not formatted as a clippings.txt")
+				raise ValueError(f"file {file} is not correctly formatted")
 
 		# Clean each file once all are validated
 		for file in path:
