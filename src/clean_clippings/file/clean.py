@@ -1,13 +1,18 @@
 '''
-	Data is formatted:
+	Input Data
 
-	title (author lastname, author firstname)
+	`title (author lastname, author firstname)
 	- Your Highlight on page X | Location X-X | Added on DAY, MONTH DATE, YEAR TIME am/pm
 
 	content
-	==========
+	==========`
 
-	We only need title, author, and content
+	Output Data
+
+	`title
+	author lastname, author firstname
+	content`
+
 '''
 
 def cleanFile(file):
@@ -42,7 +47,7 @@ def cleanFile(file):
 			cleanedHighlights.append(highlights[i])
 
 	# Write the highlights back to the file replacing what was there
-	with open("test.txt", mode='w+', encoding='utf-8') as f:
+	with open(file, mode='w+', encoding='utf-8') as f:
 		for highlight in cleanedHighlights:
 			f.writelines(highlight['title']+'\n')
 			f.writelines(highlight['author']+'\n')
